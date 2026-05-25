@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Âmbar — Pudim Artesanal Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#1a1009; --cafe:#2c1c10; --sepia:#3F2918; --cobre:#9C5F32;
+  --ouro:#C99A45; --ouro2:#E0BD73; --papel:#E7D6B6; --papel2:#F3EAD6; --creme:#FAF5EA;
+  --cinzel:'Cinzel',serif; --play:'Playfair Display',serif; --mont:'Montserrat',sans-serif;
+  --pote:url("img-1.jpg"); --hero:url("img-2.jpg");
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tinta);color:var(--papel2);font-family:var(--mont);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n")}
+img{max-width:100%;display:block}
+.kick{font-family:var(--mont);font-size:.7rem;font-weight:500;letter-spacing:.36em;text-transform:uppercase;color:var(--cobre)}
+.orn{display:flex;align-items:center;justify-content:center;gap:.7rem;color:var(--ouro)}
+.orn::before,.orn::after{content:"";height:1px;width:46px;background:linear-gradient(90deg,transparent,var(--ouro))}
+.orn span{transform:rotate(45deg);width:6px;height:6px;background:var(--ouro);display:inline-block}
+.rev{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rev.in{opacity:1;transform:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:30px 40px 16px;transition:background .4s,padding .4s,box-shadow .4s}
+nav.scrolled{background:rgba(20,12,6,.93);backdrop-filter:blur(8px);padding:12px 40px;box-shadow:0 1px 0 rgba(201,154,69,.22)}
+nav .brand{font-family:var(--cinzel);font-weight:700;letter-spacing:.3em;font-size:1.35rem;color:var(--ouro2);text-indent:.3em;text-decoration:none;cursor:pointer}
+nav .links{display:flex;gap:34px}
+nav .links a{font-family:var(--mont);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--papel);text-decoration:none;transition:color .3s;position:relative}
+nav .links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--ouro);transition:width .3s}
+nav .links a:hover{color:var(--ouro2)} nav .links a:hover::after{width:100%}
+@media(max-width:860px){nav .links{display:none} nav{padding:20px 26px}}
+
+/* HERO — REFERÊNCIA */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#160d06}
+.hero .media{position:absolute;inset:0;z-index:0;background-image:var(--hero);background-repeat:no-repeat;background-color:#0a0400;background-size:cover;background-position:center right}
+@keyframes slowzoom{to{transform:scale(1)}}
+.hero .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(15,9,4,.96) 0%,rgba(15,9,4,.86) 26%,rgba(16,10,5,.5) 48%,rgba(16,10,5,.1) 66%,transparent 80%)}
+.hero .scrim::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,9,4,.4),transparent 22%,transparent 80%,rgba(15,9,4,.45))}
+
+.framebar{position:absolute;left:40px;right:40px;z-index:3;display:flex;align-items:center;gap:16px;pointer-events:none}
+.framebar::before,.framebar::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,154,69,.5) 35%,rgba(201,154,69,.5) 65%,transparent 100%)}
+.framebar .dot{width:7px;height:7px;background:var(--ouro);transform:rotate(45deg);flex:none}
+.framebar.top{top:16px}
+.framebar.bot{bottom:16px;gap:12px}
+.framebar.bot .tagline{display:flex;align-items:center;gap:10px;flex:none}
+.framebar.bot .tagline svg{width:14px;height:14px;fill:var(--ouro)}
+.framebar.bot .tagline span{font-family:var(--play);font-style:italic;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro)}
+@media(max-width:860px){.framebar{left:24px;right:24px} .framebar.bot{display:none}}
+
+.hero .content{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:120px 40px 90px}
+.hero .col{max-width:31rem}
+.hero .mark{width:128px;margin-bottom:24px;opacity:0;transform:scale(.9);animation:pop 1.3s cubic-bezier(.2,.8,.2,1) .15s forwards;filter:drop-shadow(0 8px 22px rgba(0,0,0,.6))}
+@keyframes pop{to{opacity:1;transform:none}}
+.hero h1{font-family:var(--cinzel);font-weight:600;text-transform:uppercase;font-size:clamp(2rem,3.7vw,3.2rem);letter-spacing:.05em;line-height:1.18;color:var(--papel2);opacity:0;animation:up 1s ease .5s forwards}
+.hero h1 .g{color:var(--ouro2)}
+.hero h1.poetic{font-family:var(--play);font-weight:400;text-transform:none;letter-spacing:.005em;font-size:clamp(1.85rem,3.4vw,2.95rem);line-height:1.32;color:#ecddc0}
+.hero h1.poetic .g{font-style:italic;color:var(--ouro2)}
+.hero .divider{display:flex;align-items:center;gap:12px;margin:26px 0;max-width:200px;opacity:0;animation:up 1s ease .62s forwards}
+.hero .divider::before{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--ouro),transparent)}
+.hero .divider .dot{width:6px;height:6px;background:var(--ouro);transform:rotate(45deg)}
+.hero .divider::after{content:"";width:30px;height:1px;background:var(--ouro)}
+.hero .sub{font-family:var(--play);font-size:clamp(1rem,2.2vw,1.18rem);color:#d7c39e;max-width:30ch;line-height:1.6;opacity:0;animation:up 1s ease .74s forwards}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;opacity:0;animation:up 1s ease .9s forwards}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+@media(max-width:860px){
+ .hero{display:block;min-height:0;background:var(--tinta)}
+ .hero .media{position:relative;inset:auto;height:54vh;background-size:cover;background-position:80% center;transform:none;animation:none}
+ .hero .media::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:140px;background:linear-gradient(180deg,transparent,var(--tinta))}
+ .hero .scrim{display:none}
+ .hero .content{padding:18px 24px 46px;text-align:center}
+ .hero .col{max-width:100%;margin:0 auto}
+ .hero .mark{width:116px;margin:-50px auto 18px;position:relative;z-index:2}
+ .hero .divider{margin:18px auto;justify-content:center}
+ .hero .sub{margin:0 auto}
+ .hero .cta{justify-content:center}
+}
+
+.btn{font-family:var(--mont);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:15px 28px;border-radius:2px;text-decoration:none;transition:all .35s;cursor:pointer;border:1px solid var(--ouro);display:inline-flex;align-items:center;gap:10px}
+.btn-fill{background:linear-gradient(135deg,#d8b063,#b07f37);color:#241710;font-weight:500}
+.btn-fill:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 8px 22px rgba(176,127,55,.4)}
+.btn-line{color:var(--ouro2);background:rgba(20,12,6,.28)}
+.btn-line:hover{background:rgba(201,154,69,.14);transform:translateY(-2px)}
+.btn .arr{font-size:.9rem;line-height:1}
+
+/* MANIFESTO */
+.manifesto{background:var(--papel);color:var(--sepia);text-align:center;padding:84px 24px}
+.manifesto h2{font-family:var(--play);font-weight:500;font-size:clamp(1.8rem,5vw,3.1rem);line-height:1.25;max-width:18ch;margin:1.2rem auto 0}
+.manifesto .em{font-style:italic;color:var(--cobre)}
+
+/* HISTÓRIA */
+.story{background:var(--creme);padding:96px 24px;position:relative}
+.story .grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+@media(min-width:880px){.story .grid{grid-template-columns:1fr 1fr;gap:70px}}
+.story .em-wrap{text-align:center}
+.story .em-wrap img{width:min(84vw,440px);margin:0 auto;filter:drop-shadow(0 18px 36px rgba(60,35,12,.3))}
+.story h2{font-family:var(--play);font-weight:500;font-size:clamp(1.9rem,4.5vw,2.7rem);color:var(--sepia);margin:1rem 0 1.4rem;line-height:1.15}
+.story p{color:#5d4a36;margin-bottom:1.1rem;font-size:1.02rem}
+.story .pull{font-family:var(--play);font-style:italic;font-size:1.3rem;color:var(--cobre);border-left:2px solid var(--ouro);padding-left:18px;margin:1.6rem 0}
+
+/* PILARES */
+.pillars{background:var(--tinta);padding:90px 24px;text-align:center}
+.pillars .head h2{font-family:var(--play);font-weight:500;font-size:clamp(1.8rem,4.5vw,2.6rem);color:var(--papel2);margin:1rem 0 0}
+.pcards{max-width:1080px;margin:54px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(min-width:820px){.pcards{grid-template-columns:repeat(4,1fr)}}
+.pcard{border:1px solid rgba(201,154,69,.22);border-radius:6px;padding:34px 18px;background:rgba(255,255,255,.018);transition:transform .4s,border-color .4s,background .4s}
+.pcard:hover{transform:translateY(-6px);border-color:var(--ouro);background:rgba(201,154,69,.06)}
+.pcard svg{width:40px;height:40px;margin:0 auto 16px;stroke:var(--ouro2);fill:none;stroke-width:1.4}
+.pcard h3{font-family:var(--cinzel);font-weight:600;font-size:.92rem;letter-spacing:.08em;color:var(--ouro2);margin-bottom:.5rem}
+.pcard p{font-size:.86rem;color:#bfa985}
+
+/* PRODUTO */
+.product{position:relative;overflow:hidden;background:#160d06}
+.product .media{position:absolute;inset:0;z-index:0;background-image:var(--hero);background-size:cover;background-position:center right;background-repeat:no-repeat;background-color:#0a0400}
+.product .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,5,1,.95) 0%,rgba(10,5,1,.86) 30%,rgba(10,5,1,.46) 56%,rgba(10,5,1,0) 80%)}
+.product .inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:clamp(80px,12vw,140px) 24px;min-height:74vh;display:flex;align-items:center}
+.product .copy{max-width:500px}
+.product .lead{color:#e2d3b4;font-size:1.04rem;line-height:1.6}
+@media(min-width:880px){.product .grid{grid-template-columns:1.15fr .85fr;gap:56px}}.product h2{font-family:var(--play);font-weight:500;font-size:clamp(1.9rem,4.5vw,2.7rem);color:var(--papel2);margin:1rem 0 1.3rem;line-height:1.15}
+.product ul{list-style:none;margin-top:1.2rem}
+.product li{padding:13px 0;border-bottom:1px solid rgba(201,154,69,.22);display:flex;gap:14px;align-items:center;color:#e6d8ba;font-size:.96rem}
+.product li::before{content:"";width:7px;height:7px;background:var(--ouro2);transform:rotate(45deg);flex:none;box-shadow:0 0 8px rgba(224,189,115,.45)}
+@media(max-width:760px){.product .scrim{background:linear-gradient(180deg,rgba(10,5,1,.68) 0%,rgba(10,5,1,.84) 52%,rgba(10,5,1,.96) 100%)}.product .media{background-position:74% center}.product .inner{min-height:auto;padding:90px 22px;align-items:flex-end}}
+
+/* SISTEMA */
+.system{background:var(--papel2);padding:90px 24px;text-align:center}
+.system h2{font-family:var(--play);font-weight:500;font-size:clamp(1.8rem,4.5vw,2.6rem);color:var(--sepia);margin:1rem 0 .6rem}
+.system p.s{color:#6b5946;max-width:54ch;margin:0 auto 40px}
+.system .frame{max-width:1000px;margin:0 auto;border:1px solid #d8c298;border-radius:8px;overflow:hidden;box-shadow:0 18px 40px rgba(60,35,12,.18)}
+
+/* CTA */
+.cta-band{position:relative;padding:110px 24px;text-align:center;background:radial-gradient(120% 90% at 50% 20%,#4a3119,#1a1009);overflow:hidden}
+.cta-band img.seal{width:96px;margin:0 auto 22px;opacity:.95}
+.cta-band h2{font-family:var(--play);font-weight:500;font-size:clamp(2rem,5.5vw,3.2rem);color:var(--papel2);line-height:1.2;max-width:16ch;margin:0 auto}
+.cta-band p{color:#d8c4a2;margin:18px auto 30px;max-width:42ch}
+.cta-band .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.cta-band .order-form{max-width:500px;margin:6px auto 0;text-align:left}
+.cta-band .order-form .row{margin-bottom:14px}
+.cta-band .order-form label{display:block;font-family:var(--mont);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#cbb389;margin-bottom:7px}
+.cta-band .order-form label .opt{color:#8a7a5e;letter-spacing:.05em;text-transform:none}
+.cta-band .order-form input,.cta-band .order-form textarea{width:100%;box-sizing:border-box;background:rgba(255,255,255,.04);border:1px solid rgba(216,194,152,.35);border-radius:5px;padding:13px 14px;color:#f3ead6;font-family:var(--mont);font-size:.96rem;transition:border-color .3s,background .3s}
+.cta-band .order-form input:focus,.cta-band .order-form textarea:focus{outline:none;border-color:var(--ouro2);background:rgba(255,255,255,.07)}
+.cta-band .order-form input::placeholder,.cta-band .order-form textarea::placeholder{color:#897a5d}
+.cta-band .order-form textarea{min-height:100px;resize:vertical}
+.cta-band .order-form .btn-submit{width:100%;justify-content:center;margin-top:6px;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px}
+.cta-band .order-form .hp{position:absolute;left:-9999px;opacity:0}
+.order-note{font-family:var(--mont);font-size:.7rem;letter-spacing:.04em;color:#897a5d;text-align:center;margin-top:14px}
+.order-msg{font-family:var(--mont);text-align:center;margin-top:14px;font-size:.92rem;display:none;padding:11px;border-radius:5px;line-height:1.4}
+.order-msg.ok{display:block;color:#cfe8c0;background:rgba(120,160,90,.13)}
+.order-msg.err{display:block;color:#e8b48f;background:rgba(180,90,50,.13)}
+
+/* FOOTER */
+footer{background:var(--cafe);color:#b09a78;text-align:center;padding:56px 24px 40px}
+footer .fbrand{font-family:var(--cinzel);font-weight:700;letter-spacing:.2em;color:var(--ouro2);font-size:1.3rem;text-indent:.2em}
+footer .fsig{font-family:var(--play);font-style:italic;color:#cbb389;margin:.5rem 0 1.4rem}
+footer .flinks{display:flex;justify-content:center;flex-wrap:wrap;gap:24px;margin-bottom:1.6rem}
+footer .flinks a{color:#cbb389;text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+footer .flinks a:hover{color:var(--ouro2)}
+footer .fcopy{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#7a684c}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#topo" class="brand" aria-label="ÂMBAR — voltar ao topo">ÂMBAR</a>
+  <div class="links">
+    <a href="#historia">A História</a>
+    <a href="#essencia">A Essência</a>
+    <a href="#pote">O Pote</a>
+    <a href="#encomendar">Encomendar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="topo">
+  <div class="media"></div>
+  <div class="scrim"></div>
+  <div class="framebar top"><span class="dot"></span></div>
+  <div class="content">
+    <div class="col">
+      <img class="mark" src="img-3.png" alt="Selo Âmbar">
+      <h1 class="poetic">o prazer de uma sobremesa<br>de <span class="g">antigamente.</span></h1>
+      <div class="divider"><span class="dot"></span></div>
+      <p class="sub">Receita artesanal que preserva a memória do sabor.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="#encomendar">Faça sua encomenda <span class="arr">&rarr;</span></a>
+        <a class="btn btn-line" href="#historia">Conheça a história</a>
+      </div>
+    </div>
+  </div>
+  <div class="framebar bot">
+    <span class="tagline"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6.5 8.4 6.5 11.5a6.5 6.5 0 0 1-13 0C5.5 11.4 8 8 12 3Z"/></svg><span>Desde sempre, feito para perdurar.</span></span>
+  </div>
+</header>
+
+<!-- MANIFESTO -->
+<section class="manifesto rev">
+  <div class="orn"><span></span></div>
+  <h2>Sabores que <span class="em">atravessam o tempo.</span></h2>
+</section>
+
+<!-- HISTÓRIA -->
+<section class="story" id="historia">
+  <div class="grid">
+    <div class="em-wrap rev"><img src="img-3.png" alt="Selo Âmbar"></div>
+    <div class="rev">
+      <p class="kick">A nossa história</p>
+      <h2>A cápsula do tempo</h2>
+      <p>O âmbar nasce da resina das árvores. Ela escorre devagar, endurece e atravessa milhares de anos — guardando intacto, lá dentro, o que um dia tocou: uma folha, uma gota, um instante de outra era.</p>
+      <p class="pull">Cada pote é um pequeno relicário: o sabor de antigamente, guardado inteiro.</p>
+      <p>O pudim Âmbar não é apenas uma sobremesa — é uma cápsula de afeto. A receita de sempre, lacrada num pote de vidro e selada como algo precioso. Você não abre só um doce. Abre uma memória.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ESSÊNCIA / PILARES -->
+<section class="pillars rev" id="essencia">
+  <div class="head"><p class="kick">A essência</p><h2>Feito para durar na memória</h2></div>
+  <div class="pcards">
+    <div class="pcard"><svg viewBox="0 0 24 24"><path d="M8 3h8M9 3v3a3 3 0 0 1-3 3v9a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9a3 3 0 0 1-3-3V3"/></svg><h3>Feito com Tempo</h3><p>Preparado lentamente, com cuidado de quem não tem pressa.</p></div>
+    <div class="pcard"><svg viewBox="0 0 24 24"><path d="M12 21c5-3 7-7 7-11a7 7 0 0 0-14 0c0 4 2 8 7 11Z"/><path d="M12 4v17"/></svg><h3>Receita Artesanal</h3><p>Ingredientes selecionados, em pequenas fornadas.</p></div>
+    <div class="pcard"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z"/></svg><h3>Feito com Afeto</h3><p>Cada pote guarda uma memória de quem faz com amor.</p></div>
+    <div class="pcard"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Atravessa Gerações</h3><p>O gosto que nunca se esquece, de antigamente até hoje.</p></div>
+  </div>
+</section>
+
+<!-- PRODUTO -->
+<section class="product" id="pote">
+  <div class="media" role="img" aria-label="Pote de pudim Âmbar no cenário"></div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="copy rev">
+      <p class="kick">O produto</p>
+      <h2>Um relicário de vidro</h2>
+      <p class="lead">Pudim individual servido em pote de vidro com tampa cor de cobre e cordão de juta — pronto pra presentear ou guardar como lembrança.</p>
+      <ul>
+        <li>Pote de vidro individual, lacrado e selado</li>
+        <li>Calda de caramelo no tom âmbar</li>
+        <li>Receita artesanal, em pequenas porções</li>
+        <li>Embalagem premium, ideal para presentear</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SISTEMA -->
+<section class="system rev">
+  <p class="kick">Cada detalhe pensado</p>
+  <h2>Uma marca inteira em torno do afeto</h2>
+  <p class="s">Do selo ao rótulo, da etiqueta de juta ao lacre — tudo fala a mesma língua: ouro fosco, papel envelhecido e a gota que guarda o tempo.</p>
+  <div class="frame"><img src="img-4.jpg" alt="Sistema visual Âmbar"></div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="encomendar">
+  <img class="seal" src="img-5.png" alt="Selo Âmbar">
+  <div class="orn"><span></span></div>
+  <h2 style="margin-top:18px">Faça sua encomenda.</h2>
+  <p>Deixe seus dados e o que deseja. Recebo seu pedido e retorno o contato pra combinar tudo com calma.</p>
+
+  <form class="order-form" id="orderForm">
+    <input type="hidden" name="access_key" value="656d487c-7f46-4eea-ba40-11aff3ea2459">
+    <input type="hidden" name="subject" value="Novo pedido — Site Âmbar">
+    <input type="hidden" name="from_name" value="Site Âmbar">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+    <div class="row">
+      <label for="of-nome">Seu nome</label>
+      <input id="of-nome" type="text" name="nome" required placeholder="Como podemos te chamar?">
+    </div>
+    <div class="row">
+      <label for="of-wpp">WhatsApp / Telefone</label>
+      <input id="of-wpp" type="tel" name="whatsapp" required placeholder="(21) 90000-0000">
+    </div>
+    <div class="row">
+      <label for="of-email">E-mail <span class="opt">(opcional)</span></label>
+      <input id="of-email" type="email" name="email" placeholder="seuemail@exemplo.com">
+    </div>
+    <div class="row">
+      <label for="of-pedido">Seu pedido</label>
+      <textarea id="of-pedido" name="pedido" required placeholder="Quantos potes, sabor, para quando... conte o que precisar."></textarea>
+    </div>
+    <button type="submit" class="btn btn-fill btn-submit">Enviar pedido <span class="arr">&rarr;</span></button>
+    <p class="order-note">O retorno chega pelo contato que você informar.</p>
+    <p class="order-msg" id="orderMsg"></p>
+  </form>
+
+  <div class="cta" style="margin-top:26px">
+    <a class="btn btn-line" href="https://instagram.com/casaambarx" target="_blank" rel="noopener">@casaambarx</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">ÂMBAR</div>
+  <p class="fsig">o prazer de uma sobremesa de antigamente</p>
+  <div class="flinks">
+    <a href="#historia">A História</a>
+    <a href="#essencia">A Essência</a>
+    <a href="#pote">O Pote</a>
+    <a href="https://instagram.com/casaambarx" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <p class="fcopy">Casa Âmbar · Pudim Artesanal Premium</p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40)});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.16});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+</script>
+<script>
+(function(){
+  var form=document.getElementById('orderForm');
+  if(!form) return;
+  var msg=document.getElementById('orderMsg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var key=form.querySelector('[name=access_key]').value;
+    if(key.indexOf('COLE_AQUI')===0){
+      msg.className='order-msg err';
+      msg.textContent='Formulário ainda não ativado: falta inserir a chave do Web3Forms.';
+      return;
+    }
+    var btn=form.querySelector('button[type=submit]');
+    var orig=btn.innerHTML; btn.disabled=true; btn.innerHTML='Enviando...';
+    msg.style.display='none';
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form)
+    }).then(function(r){return r.json();}).then(function(data){
+      if(data.success){
+        form.reset();
+        msg.className='order-msg ok';
+        msg.textContent='Pedido recebido! Em breve retornaremos o seu contato. Obrigado.';
+      }else{
+        msg.className='order-msg err';
+        msg.textContent='Não foi possível enviar agora. Tente novamente em instantes.';
+      }
+    }).catch(function(){
+      msg.className='order-msg err';
+      msg.textContent='Falha na conexão. Confira sua internet e tente de novo.';
+    }).finally(function(){ btn.disabled=false; btn.innerHTML=orig; });
+  });
+})();
+</script>
+</body>
+</html>
